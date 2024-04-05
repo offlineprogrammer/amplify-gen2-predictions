@@ -13,19 +13,19 @@ const backend = defineBackend({
   convertTextToSpeech
 });
 
-//const dataStack = Stack.of(backend.data)
+const dataStack = Stack.of(backend.data)
 
-// const translateDataSource = backend.data.addHttpDataSource("TranslateDataSource", `https://translate.${dataStack.region}.amazonaws.com`, {
-//   authorizationConfig: {
-//     signingRegion: dataStack.region,
-//     signingServiceName: 'translate'
-//   }
-// })
+const translateDataSource = backend.data.addHttpDataSource("TranslateDataSource", `https://translate.${dataStack.region}.amazonaws.com`, {
+  authorizationConfig: {
+    signingRegion: dataStack.region,
+    signingServiceName: 'translate'
+  }
+})
 
-// translateDataSource.grantPrincipal.addToPrincipalPolicy(new PolicyStatement({
-//   actions: ['translate:TranslateText'],
-//   resources: ['*']
-// }))
+translateDataSource.grantPrincipal.addToPrincipalPolicy(new PolicyStatement({
+  actions: ['translate:TranslateText'],
+  resources: ['*']
+}))
 
 // const rekognitionDataSource = backend.data.addHttpDataSource("RekognitionDataSource", `https://rekognition.${dataStack.region}.amazonaws.com`, {
 //   authorizationConfig: {

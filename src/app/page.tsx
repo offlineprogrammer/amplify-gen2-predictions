@@ -15,12 +15,11 @@ export default function Home() {
   const [file, setFile] = useState("");
 
   function play() {
-    var audio = document.getElementById('a1');
+    var audio = document.getElementById("a1");
     if (audio) {
       audio.play();
     }
   }
-
 
   return (
     <main className="flex min-h-screen flex-col items-center  p-24  m-auto ">
@@ -62,13 +61,34 @@ export default function Home() {
             Fetch audio
           </button>
         </div>
-        
-     
 
-                <div>
-             
-                  <a target="_blank"  href={src}><button className=" text-white p-2 rounded-lg bg-blue-500   w-1/2 text-xl ">Open File</button></a>
-                </div>
+        <div>
+          <a target="_blank" href={src}>
+            <button className=" text-white p-2 rounded-lg bg-blue-500   w-1/2 text-xl ">
+              Open File
+            </button>
+          </a>
+        </div>
+
+        <div>
+          <button
+            className="  text-white p-2 rounded-lg bg-blue-500   w-1/2 text-xl  "
+            onClick={async () => {
+              const { data }= await client.queries.translate({
+                sourceLanguage: "en",
+                targetLanguage: "es",
+                text: "Welcome to Amplify!",
+                
+              });
+
+              console.log("Translate");
+              console.log(data);
+
+            }}
+          >
+            Translate
+          </button>
+        </div>
       </div>
     </main>
   );

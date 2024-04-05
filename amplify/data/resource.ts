@@ -9,18 +9,18 @@ const schema = a.schema({
     content: a.string(),
   }).authorization([a.allow.owner(), a.allow.public().to(['read'])]),
 
-  // translate: a.query()
-  //   .arguments({
-  //     sourceLanguage: a.string().required(),
-  //     targetLanguage: a.string().required(),
-  //     text: a.string().required()
-  //   })
-  //   .returns(a.string())
-  //   .authorization([a.allow.public()])
-  //   .handler(a.handler.custom({
-  //     dataSource: "TranslateDataSource",
-  //     entry: './translate.js'
-  //   })),
+  translate: a.query()
+    .arguments({
+      sourceLanguage: a.string().required(),
+      targetLanguage: a.string().required(),
+      text: a.string().required()
+    })
+    .returns(a.string())
+    .authorization([a.allow.public()])
+    .handler(a.handler.custom({
+      dataSource: "TranslateDataSource",
+      entry: './translate.js'
+    })),
 
   // identifyText: a.query()
   //   .arguments({

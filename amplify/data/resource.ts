@@ -22,16 +22,16 @@ const schema = a.schema({
       entry: './translate.js'
     })),
 
-  // identifyText: a.query()
-  //   .arguments({
-  //     path: a.string(),
-  //   })
-  //   .returns(a.string())
-  //   .authorization([a.allow.public()])
-  //   .handler(a.handler.custom({
-  //     entry: './identifyText.js',
-  //     dataSource: 'RekognitionDataSource'
-  //   })),
+  identifyText: a.query()
+    .arguments({
+      path: a.string(),
+    })
+    .returns(a.string())
+    .authorization([a.allow.public()])
+    .handler(a.handler.custom({
+      entry: './identifyText.js',
+      dataSource: 'RekognitionDataSource'
+    })),
 
   // identifyLabels: a.query()
   //   .arguments({

@@ -27,19 +27,19 @@ translateDataSource.grantPrincipal.addToPrincipalPolicy(new PolicyStatement({
   resources: ['*']
 }))
 
-// const rekognitionDataSource = backend.data.addHttpDataSource("RekognitionDataSource", `https://rekognition.${dataStack.region}.amazonaws.com`, {
-//   authorizationConfig: {
-//     signingRegion: dataStack.region,
-//     signingServiceName: 'rekognition'
-//   }
-// })
+const rekognitionDataSource = backend.data.addHttpDataSource("RekognitionDataSource", `https://rekognition.${dataStack.region}.amazonaws.com`, {
+  authorizationConfig: {
+    signingRegion: dataStack.region,
+    signingServiceName: 'rekognition'
+  }
+})
 
-// rekognitionDataSource.grantPrincipal.addToPrincipalPolicy(new PolicyStatement({
-//   actions: ['rekognition:DetectText', 'rekognition:DetectLabels'],
-//   resources: ['*'] 
-// }))
+rekognitionDataSource.grantPrincipal.addToPrincipalPolicy(new PolicyStatement({
+  actions: ['rekognition:DetectText', 'rekognition:DetectLabels'],
+  resources: ['*'] 
+}))
 
-// backend.storage.resources.bucket.grantRead(rekognitionDataSource.grantPrincipal)
+backend.storage.resources.bucket.grantRead(rekognitionDataSource.grantPrincipal)
 
 backend.convertTextToSpeech.resources.lambda.addToRolePolicy(new PolicyStatement({
   actions: ['polly:StartSpeechSynthesisTask'],

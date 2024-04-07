@@ -6,7 +6,7 @@ export function request(ctx) {
         body: {
           Image: {
             S3Object: {
-              Bucket: 'amplify-gen2atpredictions-predictionsforgen2bucket-htswpz5idzsx',
+              Bucket: ctx.arguments.bucket,
               Name: ctx.arguments.path
             }
           }

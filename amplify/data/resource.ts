@@ -22,16 +22,20 @@ const schema = a.schema({
       entry: './translate.js'
     })),
 
-  identifyText: a.query()
+    identifyText: a
+    .query()
     .arguments({
       path: a.string(),
+      bucket: a.string(),
     })
     .returns(a.string())
     .authorization([a.allow.public()])
-    .handler(a.handler.custom({
-      entry: './identifyText.js',
-      dataSource: 'RekognitionDataSource'
-    })),
+    .handler(
+      a.handler.custom({
+        entry: "./identifyText.js",
+        dataSource: "RekognitionDataSource",
+      })
+    ),
 
   // identifyLabels: a.query()
   //   .arguments({

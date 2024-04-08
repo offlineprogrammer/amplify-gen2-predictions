@@ -37,16 +37,17 @@ const schema = a.schema({
       })
     ),
 
-  // identifyLabels: a.query()
-  //   .arguments({
-  //     path: a.string(),
-  //   })
-  //   .returns(a.string())
-  //   .authorization([a.allow.public()])
-  //   .handler(a.handler.custom({
-  //     entry: './identifyLabels.js',
-  //     dataSource: 'RekognitionDataSource'
-  //   })),
+  identifyLabels: a.query()
+    .arguments({
+      path: a.string(),
+      bucket: a.string(),      
+    })
+    .returns(a.string())
+    .authorization([a.allow.public()])
+    .handler(a.handler.custom({
+      entry: './identifyLabels.js',
+      dataSource: 'RekognitionDataSource'
+    })),
 
   convertTextToSpeech: a.mutation()
     .arguments({

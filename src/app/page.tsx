@@ -74,13 +74,14 @@ export default function Home() {
           <button
             className="  text-white p-2 rounded-lg bg-blue-500   w-1/2 text-xl  "
             onClick={async () => {
-              const { data }= await client.queries.translate({
-                sourceLanguage: "en",
-                targetLanguage: "es",
-                text: "Welcome to Amplify!",
-                
+              const { data }= await client.queries.identifyLabels({
+                path: "imagelabel.png",
+                bucket: "amplify-amplifygen2predic-predictionsforgen2bucket-eopz9nfz0yop"
               });
+              console.log(data);
 
+
+ 
               console.log("Translate");
               console.log(data);
 
